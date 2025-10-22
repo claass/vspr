@@ -70,6 +70,46 @@ npm run dev
 
 The application will be available at `http://localhost:3000`.
 
+## UI Components (shadcn/ui)
+
+This project uses [shadcn/ui](https://ui.shadcn.com) for UI components. The following components are currently installed:
+
+- **Button**: Various button variants (default, secondary, destructive, outline, ghost, link)
+- **Card**: Card components for displaying content (Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter)
+- **Dialog**: Modal dialogs for user interactions
+- **Separator**: Horizontal and vertical separators for layout
+
+### Using Components
+
+Components are located in `components/ui/` and can be imported as follows:
+
+```tsx
+import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog"
+import { Separator } from "@/components/ui/separator"
+```
+
+### Component Demo
+
+Visit `/components-demo` to see all installed components in action.
+
+### Adding New Components
+
+To add new shadcn/ui components:
+
+1. Visit [shadcn/ui documentation](https://ui.shadcn.com/docs/components)
+2. Copy the component code into `components/ui/[component-name].tsx`
+3. Install any required dependencies
+4. Import and use in your pages/components
+
+### Theming
+
+The application uses CSS variables for theming, configured in:
+- `app/globals.css` - Color variables and theme definitions
+- `tailwind.config.js` - Tailwind configuration with shadcn/ui extensions
+- `components.json` - shadcn/ui configuration
+
 ## API Endpoints
 
 ### `POST /api/draw`
