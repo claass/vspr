@@ -1,121 +1,187 @@
-import Image from "next/image";
-import Link from "next/link";
+'use client';
+
+import { useState } from 'react';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from '@/components/ui/dialog';
+import { Separator } from '@/components/ui/separator';
+
+interface CardData {
+  id: string;
+  name: string;
+  description: string;
+  imageUrl: string;
+}
 
 export default function Home() {
+  const [cards, setCards] = useState<CardData[]>([]);
+  const [selectedCard, setSelectedCard] = useState<CardData | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const drawCards = async () => {
+    setIsLoading(true);
+    setError(null);
+    try {
+      const response = await fetch('/api/py/draw');
+      if (!response.ok) {
+        throw new Error('Failed to draw cards');
+      }
+      const data = await response.json();
+      setCards(data.cards);
+    } catch (err) {
+      setError('Failed to draw cards. Please try again.');
+      console.error(err);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const resetReading = () => {
+    setCards([]);
+    setSelectedCard(null);
+    setError(null);
+  };
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing FastApi API&nbsp;
-          <Link href="/api/py/helloFastApi">
-            <code className="font-mono font-bold">api/index.py</code>
-          </Link>
-        </p>
-        <p className="fixed right-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing Next.js API&nbsp;
-          <Link href="/api/helloNextJs">
-            <code className="font-mono font-bold">app/api/helloNextJs</code>
-          </Link>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <main className="min-h-screen bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 dark:from-gray-900 dark:via-purple-900 dark:to-indigo-900">
+      <div className="container mx-auto px-4 py-16">
+        {/* Header */}
+        <div className="text-center mb-12">
+          <h1 className="text-5xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent mb-4">
+            Vesper
+          </h1>
+          <p className="text-lg text-gray-600 dark:text-gray-300">
+            Modern card readings for a digital age
+          </p>
         </div>
-      </div>
 
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
+        {/* Landing State - No cards drawn yet */}
+        {cards.length === 0 && (
+          <div className="flex flex-col items-center justify-center space-y-8">
+            <div className="relative w-48 h-64 flex items-center justify-center">
+              {/* Deck Visual - Stacked cards effect */}
+              <div className="absolute inset-0 bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg transform rotate-6 opacity-20"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg transform rotate-3 opacity-40"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-purple-600 to-pink-600 rounded-lg shadow-2xl flex items-center justify-center">
+                <div className="text-white text-6xl">✨</div>
+              </div>
+            </div>
 
-      <div className="mb-32 grid text-center lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
+            <div className="text-center space-y-4 max-w-md">
+              <h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-200">
+                Begin Your Journey
+              </h2>
+              <p className="text-gray-600 dark:text-gray-400">
+                Draw three cards to receive guidance and reflection for your current path.
+              </p>
+            </div>
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800 hover:dark:bg-opacity-30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
+            <Button
+              size="lg"
+              onClick={drawCards}
+              disabled={isLoading}
+              className="px-8 py-6 text-lg bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700"
+            >
+              {isLoading ? 'Drawing Cards...' : 'Draw Cards'}
+            </Button>
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore the Next.js 13 playground.
-          </p>
-        </a>
+            {error && (
+              <p className="text-red-500 dark:text-red-400">{error}</p>
+            )}
+          </div>
+        )}
 
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
+        {/* Reading State - Cards are displayed */}
+        {cards.length > 0 && (
+          <div className="space-y-8">
+            <div className="text-center">
+              <h2 className="text-3xl font-semibold text-gray-800 dark:text-gray-200 mb-2">
+                Your Reading
+              </h2>
+              <p className="text-gray-600 dark:text-gray-400">
+                Click any card to explore its meaning
+              </p>
+            </div>
+
+            {/* Three Card Spread */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+              {cards.map((card, index) => (
+                <Card
+                  key={card.id}
+                  className="cursor-pointer hover:shadow-xl transition-all duration-300 hover:scale-105 bg-white/80 dark:bg-gray-800/80 backdrop-blur"
+                  onClick={() => setSelectedCard(card)}
+                >
+                  <CardHeader>
+                    <div className="aspect-[2/3] bg-gradient-to-br from-purple-400 to-pink-400 rounded-lg flex items-center justify-center mb-4 relative overflow-hidden">
+                      <div className="absolute inset-0 bg-black/10"></div>
+                      <span className="text-6xl z-10">
+                        {index === 0 ? '🌅' : index === 1 ? '🌟' : '🌙'}
+                      </span>
+                    </div>
+                    <CardTitle className="text-center text-xl">
+                      {card.name}
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-sm text-gray-600 dark:text-gray-400 text-center line-clamp-2">
+                      {card.description}
+                    </p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+
+            <Separator className="my-8" />
+
+            {/* New Reading Button */}
+            <div className="flex justify-center">
+              <Button
+                variant="outline"
+                size="lg"
+                onClick={resetReading}
+                className="px-8"
+              >
+                New Reading
+              </Button>
+            </div>
+          </div>
+        )}
+
+        {/* Card Detail Modal */}
+        <Dialog open={!!selectedCard} onOpenChange={() => setSelectedCard(null)}>
+          <DialogContent className="max-w-2xl">
+            {selectedCard && (
+              <>
+                <DialogHeader>
+                  <div className="aspect-[2/3] max-w-xs mx-auto bg-gradient-to-br from-purple-400 to-pink-400 rounded-lg flex items-center justify-center mb-4 relative overflow-hidden">
+                    <div className="absolute inset-0 bg-black/10"></div>
+                    <span className="text-8xl z-10">
+                      {cards.indexOf(selectedCard) === 0
+                        ? '🌅'
+                        : cards.indexOf(selectedCard) === 1
+                        ? '🌟'
+                        : '🌙'}
+                    </span>
+                  </div>
+                  <DialogTitle className="text-3xl text-center">
+                    {selectedCard.name}
+                  </DialogTitle>
+                </DialogHeader>
+                <div className="space-y-4">
+                  <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-center">
+                    {selectedCard.description}
+                  </p>
+                </div>
+              </>
+            )}
+          </DialogContent>
+        </Dialog>
       </div>
     </main>
   );

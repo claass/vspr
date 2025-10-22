@@ -1,0 +1,136 @@
+{
+  "cards": [
+    {
+      "id": "major-0",
+      "name": "The Fool",
+      "description": "New beginnings, spontaneity, and infinite potential await. The Fool invites you to take a leap of faith and trust in the journey ahead, even when the path is unclear. Embrace curiosity and remain open to life's adventures.",
+      "imageUrl": "/images/cards/the-fool.jpg"
+    },
+    {
+      "id": "major-1",
+      "name": "The Magician",
+      "description": "You have all the tools you need to manifest your desires. The Magician represents resourcefulness, skill, and the power to transform ideas into reality. Channel your willpower and focus to create the life you envision.",
+      "imageUrl": "/images/cards/the-magician.jpg"
+    },
+    {
+      "id": "major-2",
+      "name": "The High Priestess",
+      "description": "Trust your intuition and inner wisdom. The High Priestess encourages you to look beyond the surface and explore the mysteries within. Listen to your subconscious and honor the sacred knowledge that resides in silence.",
+      "imageUrl": "/images/cards/the-high-priestess.jpg"
+    },
+    {
+      "id": "major-3",
+      "name": "The Empress",
+      "description": "Abundance, nurturing, and creative expression flow through you. The Empress represents fertility in all forms—ideas, projects, relationships. Connect with nature and allow yourself to flourish in comfort and beauty.",
+      "imageUrl": "/images/cards/the-empress.jpg"
+    },
+    {
+      "id": "major-4",
+      "name": "The Emperor",
+      "description": "Structure, authority, and solid foundations support your endeavors. The Emperor calls for leadership, discipline, and strategic thinking. Establish order and take control of your domain with confidence and wisdom.",
+      "imageUrl": "/images/cards/the-emperor.jpg"
+    },
+    {
+      "id": "major-5",
+      "name": "The Hierophant",
+      "description": "Tradition, spiritual guidance, and shared wisdom illuminate your path. The Hierophant represents education, belief systems, and conformity to social structures. Seek mentorship or explore what traditions mean to you.",
+      "imageUrl": "/images/cards/the-hierophant.jpg"
+    },
+    {
+      "id": "major-6",
+      "name": "The Lovers",
+      "description": "Meaningful connections, choices, and alignment of values define this moment. The Lovers represent harmony, partnership, and the union of opposites. Consider what and whom you truly value, and make choices from the heart.",
+      "imageUrl": "/images/cards/the-lovers.jpg"
+    },
+    {
+      "id": "major-7",
+      "name": "The Chariot",
+      "description": "Determination, willpower, and forward momentum drive you toward victory. The Chariot signifies triumph through focus and self-discipline. Harness opposing forces and steer confidently toward your goals.",
+      "imageUrl": "/images/cards/the-chariot.jpg"
+    },
+    {
+      "id": "major-8",
+      "name": "Strength",
+      "description": "Inner courage, compassion, and gentle power overcome all obstacles. Strength reminds you that true power comes from patience, love, and resilience. Face challenges with grace rather than force.",
+      "imageUrl": "/images/cards/strength.jpg"
+    },
+    {
+      "id": "major-9",
+      "name": "The Hermit",
+      "description": "Solitude, introspection, and inner guidance light your way. The Hermit invites you to retreat from the noise of the world and seek wisdom within. Take time for self-reflection and spiritual seeking.",
+      "imageUrl": "/images/cards/the-hermit.jpg"
+    },
+    {
+      "id": "major-10",
+      "name": "Wheel of Fortune",
+      "description": "Cycles, destiny, and turning points shape your journey. The Wheel of Fortune reminds you that change is constant and life moves in natural rhythms. Embrace the ebb and flow with acceptance and trust.",
+      "imageUrl": "/images/cards/wheel-of-fortune.jpg"
+    },
+    {
+      "id": "major-11",
+      "name": "Justice",
+      "description": "Truth, fairness, and accountability bring balance to your situation. Justice calls for honest assessment, karmic consequences, and making decisions with integrity. Seek equilibrium and take responsibility for your actions.",
+      "imageUrl": "/images/cards/justice.jpg"
+    },
+    {
+      "id": "major-12",
+      "name": "The Hanged Man",
+      "description": "Surrender, new perspectives, and letting go create space for transformation. The Hanged Man suggests pausing, releasing control, and viewing your circumstances from a different angle. Sometimes sacrifice leads to enlightenment.",
+      "imageUrl": "/images/cards/the-hanged-man.jpg"
+    },
+    {
+      "id": "major-13",
+      "name": "Death",
+      "description": "Transformation, endings, and renewal mark a powerful transition. Death signifies the closing of one chapter to make way for another. Embrace change, release what no longer serves you, and trust in rebirth.",
+      "imageUrl": "/images/cards/death.jpg"
+    },
+    {
+      "id": "major-14",
+      "name": "Temperance",
+      "description": "Balance, moderation, and harmony bring peace to your life. Temperance encourages patience, blending of opposites, and finding the middle way. Integrate different aspects of yourself and seek equilibrium.",
+      "imageUrl": "/images/cards/temperance.jpg"
+    },
+    {
+      "id": "major-15",
+      "name": "The Devil",
+      "description": "Attachments, limitations, and shadow aspects call for awareness. The Devil reveals where you may be trapped by materialism, addiction, or unhealthy patterns. Recognize your chains and reclaim your power to break free.",
+      "imageUrl": "/images/cards/the-devil.jpg"
+    },
+    {
+      "id": "major-16",
+      "name": "The Tower",
+      "description": "Sudden change, revelation, and upheaval shake your foundations. The Tower represents necessary destruction of false structures. Though difficult, this collapse clears the way for authentic rebuilding and liberation.",
+      "imageUrl": "/images/cards/the-tower.jpg"
+    },
+    {
+      "id": "major-17",
+      "name": "The Star",
+      "description": "Hope, inspiration, and renewed faith light your path forward. The Star brings healing, serenity, and connection to something greater. Trust that you are guided and that brighter days lie ahead.",
+      "imageUrl": "/images/cards/the-star.jpg"
+    },
+    {
+      "id": "major-18",
+      "name": "The Moon",
+      "description": "Intuition, dreams, and the unknown invite deeper exploration. The Moon illuminates illusions, fears, and the subconscious realm. Navigate uncertainty with awareness and trust your inner guidance through the shadows.",
+      "imageUrl": "/images/cards/the-moon.jpg"
+    },
+    {
+      "id": "major-19",
+      "name": "The Sun",
+      "description": "Joy, success, and radiant vitality warm your world. The Sun represents clarity, optimism, and the simple pleasure of being alive. Celebrate your accomplishments and bask in positive energy and abundance.",
+      "imageUrl": "/images/cards/the-sun.jpg"
+    },
+    {
+      "id": "major-20",
+      "name": "Judgement",
+      "description": "Reflection, reckoning, and absolution bring closure and new purpose. Judgement calls for honest self-evaluation and forgiveness. Rise renewed from past experiences and answer your higher calling with clarity.",
+      "imageUrl": "/images/cards/judgement.jpg"
+    },
+    {
+      "id": "major-21",
+      "name": "The World",
+      "description": "Completion, fulfillment, and cosmic unity crown your journey. The World represents achievement, integration, and the end of a significant cycle. Celebrate your wholeness and prepare for new adventures ahead.",
+      "imageUrl": "/images/cards/the-world.jpg"
+    }
+  ]
+}
