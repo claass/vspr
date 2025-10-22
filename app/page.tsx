@@ -123,10 +123,10 @@ export default function Home() {
               {cards.map((card, index) => (
                 <Card
                   key={card.id}
-                  className="cursor-pointer group"
+                  className="cursor-pointer group h-full flex flex-col"
                   onClick={() => setSelectedCard(card)}
                 >
-                  <CardHeader>
+                  <CardHeader className="flex-shrink-0">
                     <div className="aspect-[2/3] glass-strong bg-gradient-to-br from-blue-400/60 via-indigo-400/60 to-purple-400/60 rounded-2xl flex items-center justify-center mb-6 relative overflow-hidden shadow-lg group-hover:shadow-2xl transition-all duration-300">
                       <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                       <span className="text-7xl z-10 drop-shadow-lg group-hover:scale-110 transition-transform duration-300">
@@ -137,8 +137,8 @@ export default function Home() {
                       {card.name}
                     </CardTitle>
                   </CardHeader>
-                  <CardContent>
-                    <p className="text-sm text-foreground/70 text-center line-clamp-2 leading-relaxed">
+                  <CardContent className="flex-grow flex items-start">
+                    <p className="text-sm text-foreground/70 text-center line-clamp-2 leading-relaxed w-full">
                       {card.description}
                     </p>
                   </CardContent>
