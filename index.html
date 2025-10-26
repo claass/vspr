@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Luminous Arcana Design System</title>
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,600,700&f[]=erode@400&display=swap">
+  <link rel="preload" href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,600,700&f[]=erode@400&display=swap" as="style">
+  <link rel="stylesheet" href="styles/tokens.css">
+  <link rel="stylesheet" href="styles/base.css">
+  <link rel="stylesheet" href="styles/components.css">
+  <link rel="stylesheet" href="styles/themes.css">
+</head>
+<body class="theme-night triad-cyan-coral-peach">
+  <div class="app-shell" data-material="velvet">
+    <header class="control-panel" aria-label="Control panel">
+      <h1 class="brand-heading">Luminous Arcana System Gallery</h1>
+      <div class="control-panel__group" role="group" aria-labelledby="theme-heading">
+        <h2 id="theme-heading">Scene Theme</h2>
+        <label class="switch-option">
+          <input type="radio" name="theme" value="night" checked>
+          <span>Night</span>
+        </label>
+        <label class="switch-option">
+          <input type="radio" name="theme" value="dawn">
+          <span>Dawn</span>
+        </label>
+      </div>
+      <div class="control-panel__group" role="group" aria-labelledby="triad-heading">
+        <h2 id="triad-heading">Iridescent Triad</h2>
+        <label class="switch-option">
+          <input type="radio" name="triad" value="cyan-coral-peach" checked>
+          <span>Cyan / Coral / Peach</span>
+        </label>
+        <label class="switch-option">
+          <input type="radio" name="triad" value="jade-ember-opal">
+          <span>Jade / Ember / Opal</span>
+        </label>
+        <label class="switch-option">
+          <input type="radio" name="triad" value="azure-rose-softgold">
+          <span>Azure / Rose / Soft Gold</span>
+        </label>
+      </div>
+      <div class="control-panel__group" role="group" aria-labelledby="prefs-heading">
+        <h2 id="prefs-heading">Preferences</h2>
+        <label class="switch-option">
+          <input type="checkbox" id="pref-reduce-motion">
+          <span>Reduce Motion</span>
+        </label>
+        <label class="switch-option">
+          <input type="checkbox" id="pref-high-contrast">
+          <span>High Contrast</span>
+        </label>
+        <label class="switch-option">
+          <input type="checkbox" id="pref-sans-body">
+          <span>Sans-serif Body</span>
+        </label>
+      </div>
+    </header>
+
+    <main class="gallery" id="main-content">
+      <section class="component-section" aria-labelledby="buttons-heading">
+        <div class="section-header">
+          <h2 id="buttons-heading">Resin Slab Buttons</h2>
+          <p>Primary and secondary calls to action etched into resin.</p>
+        </div>
+        <div class="button-grid">
+          <button class="btn-resin" data-variant="primary">Invoke Insight</button>
+          <button class="btn-resin" data-variant="secondary">Hold Question</button>
+          <button class="btn-resin" data-variant="primary" disabled aria-disabled="true">Invocation Cooling</button>
+        </div>
+      </section>
+
+      <section class="component-section" aria-labelledby="toggle-heading">
+        <div class="section-header">
+          <h2 id="toggle-heading">Candle Toggle</h2>
+          <p>Shift the altar candle from unlit to lit, revealing a gentle shimmer.</p>
+        </div>
+        <div class="toggle-candle" role="switch" aria-checked="false" tabindex="0" id="candle-toggle">
+          <div class="toggle-candle__wick" aria-hidden="true"></div>
+          <div class="toggle-candle__flame" aria-hidden="true"></div>
+          <span class="toggle-candle__label">Candle</span>
+          <span class="toggle-candle__description">Unlit</span>
+        </div>
+      </section>
+
+      <section class="component-section" aria-labelledby="progress-heading">
+        <div class="section-header">
+          <h2 id="progress-heading">Chalice Fill Progress</h2>
+          <p>Watch the chalice brim with insight; an ember rim crowns completion.</p>
+        </div>
+        <div class="chalice" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+          <div class="chalice__stem"></div>
+          <div class="chalice__bowl">
+            <div class="chalice__liquid"></div>
+            <div class="chalice__ember" aria-hidden="true"></div>
+          </div>
+        </div>
+        <p class="chalice__status" aria-live="polite">Progress at 0%.</p>
+      </section>
+
+      <section class="component-section" aria-labelledby="coins-heading">
+        <div class="section-header">
+          <h2 id="coins-heading">Coin Tabs</h2>
+          <p>Select a suit to filter prophecies; coins show etched glyphs and tactile cues.</p>
+        </div>
+        <div class="coins" role="tablist" aria-label="Coin suits">
+          <button class="coin is-active" role="tab" aria-selected="true" id="coin-cups" data-target="panel-cups" aria-controls="panel-cups">
+            <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M5 4h14l-1 6a6 6 0 0 1-12 0z" /></svg>
+            <span>Cups</span>
+            <span class="coin__notch" aria-hidden="true"></span>
+          </button>
+          <button class="coin" role="tab" aria-selected="false" id="coin-swords" data-target="panel-swords" aria-controls="panel-swords">
+            <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M12 3l3 4-2 2 7 9-2 2-9-7-2 2-4-3z" /></svg>
+            <span>Swords</span>
+            <span class="coin__notch" aria-hidden="true"></span>
+          </button>
+          <button class="coin" role="tab" aria-selected="false" id="coin-pentacles" data-target="panel-pentacles" aria-controls="panel-pentacles">
+            <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M12 4l2.2 4.5L19 9l-3.6 3.2L16.4 18 12 15.6 7.6 18l1-5.8L5 9l4.8-.5z" /></svg>
+            <span>Pentacles</span>
+            <span class="coin__notch" aria-hidden="true"></span>
+          </button>
+        </div>
+        <div class="coin-panels">
+          <div class="coin-panel is-active" id="panel-cups" role="tabpanel" aria-labelledby="coin-cups">
+            A restorative flow governs matters of heart and intuition.
+          </div>
+          <div class="coin-panel" id="panel-swords" role="tabpanel" aria-labelledby="coin-swords" hidden>
+            Keen clarity cuts through dense fogs of doubt.
+          </div>
+          <div class="coin-panel" id="panel-pentacles" role="tabpanel" aria-labelledby="coin-pentacles" hidden>
+            Shimmering mosaics of craft and care shape the tangible world.
+          </div>
+        </div>
+      </section>
+
+      <section class="component-section" aria-labelledby="cards-heading">
+        <div class="section-header">
+          <h2 id="cards-heading">Arcana Cards</h2>
+          <p>Translucent faces hover within, responsive to micro-parallax.</p>
+        </div>
+        <div class="card-grid" role="list">
+          <article class="card" role="listitem" data-card="priestess" tabindex="0" aria-label="Card 1 of 3: The High Priestess">
+            <div class="card__inlay"></div>
+            <h3 class="card__title">The High Priestess</h3>
+            <p class="card__body">Still waters carry secrets meant for careful hands.</p>
+          </article>
+          <article class="card is-highlightable" role="listitem" data-card="tower" tabindex="0" aria-label="Card 2 of 3: The Tower">
+            <div class="card__inlay"></div>
+            <h3 class="card__title">The Tower</h3>
+            <p class="card__body">Lightning spines rewire brittle assumptions with sudden light.</p>
+          </article>
+          <article class="card is-reversed" role="listitem" data-card="star" tabindex="0" aria-label="Card 3 of 3: The Star, reversed">
+            <div class="card__inlay"></div>
+            <h3 class="card__title">The Star</h3>
+            <p class="card__body">Distant beacons ask for patience before renewal.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="component-section" aria-labelledby="chat-heading">
+        <div class="section-header">
+          <h2 id="chat-heading">Breathing Orb Chat Indicator</h2>
+          <p>Signal when responses are forming via gentle breath cycles.</p>
+        </div>
+        <div class="chat-orb" role="status" aria-live="polite" aria-label="Listening">
+          <span class="chat-orb__pulse"></span>
+        </div>
+        <button class="btn-resin" data-variant="secondary" id="chat-toggle">Toggle Thinking</button>
+      </section>
+
+      <section class="component-section" aria-labelledby="explain-heading">
+        <div class="section-header">
+          <h2 id="explain-heading">Explainability Filaments</h2>
+          <p>Click or focus a sentence to reveal its guiding card.</p>
+        </div>
+        <div class="explainability">
+          <div class="explainability__text" role="list">
+            <button class="explainability__sentence" role="listitem" data-card="priestess">The soft intuition here resonates with the High Priestess.</button>
+            <button class="explainability__sentence" role="listitem" data-card="tower">Structural upheaval echoes the Tower's lesson.</button>
+            <button class="explainability__sentence" role="listitem" data-card="star">Hope tempered by patience belongs to the reversed Star.</button>
+          </div>
+          <svg class="explainability__filament" viewBox="0 0 600 300" aria-hidden="true">
+            <defs>
+              <linearGradient id="filamentGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="var(--accent-a)" />
+                <stop offset="100%" stop-color="var(--accent-c)" stop-opacity="0.85" />
+              </linearGradient>
+            </defs>
+            <path d="M20 50 C 200 80, 260 140, 420 120" stroke="url(#filamentGradient)" stroke-width="2" fill="none" class="filament filament--priestess" />
+            <path d="M20 140 C 220 180, 280 220, 420 200" stroke="url(#filamentGradient)" stroke-width="2" fill="none" class="filament filament--tower" />
+            <path d="M20 230 C 220 250, 280 260, 420 260" stroke="url(#filamentGradient)" stroke-width="2" fill="none" class="filament filament--star" />
+          </svg>
+        </div>
+      </section>
+
+      <section class="component-section" aria-labelledby="disclaimer-heading">
+        <div class="section-header">
+          <h2 id="disclaimer-heading">Disclaimers</h2>
+          <p>Ethical guardrails temper every scene.</p>
+        </div>
+        <div class="disclaimer" role="note">
+          <div class="disclaimer__icon" aria-hidden="true">⚖️</div>
+          <div>
+            <strong>Guidance, not gospel.</strong>
+            <p>Interpretations suggest pathways; your agency remains sovereign.</p>
+          </div>
+        </div>
+        <div class="disclaimer disclaimer--strong" role="alert">
+          <div class="disclaimer__icon" aria-hidden="true">⚠️</div>
+          <div>
+            <strong>Important: Not medical, legal, or financial advice.</strong>
+            <p>Consult licensed professionals for health, legal, or financial decisions.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="qa-panel" aria-labelledby="qa-heading">
+      <h2 id="qa-heading">QA Panel</h2>
+      <div class="qa-panel__row">
+        <span>Primary text contrast</span>
+        <output id="contrast-status">Calculating…</output>
+      </div>
+      <div class="qa-panel__row">
+        <span>Active gamut</span>
+        <output id="gamut-status">Detecting…</output>
+      </div>
+      <div class="qa-panel__row qa-panel__noise">
+        <label for="noise-toggle">Micro-noise overlay</label>
+        <input type="checkbox" id="noise-toggle">
+      </div>
+    </footer>
+  </div>
+  <div class="noise-overlay" aria-hidden="true"></div>
+  <script src="scripts/app.js" defer></script>
+</body>
+</html>

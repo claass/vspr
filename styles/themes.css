@@ -1,0 +1,58 @@
+/* Theme palette orchestration */
+body.theme-night {
+  background-color: var(--ink-abyss);
+  color: var(--off-white-warm);
+  --accent-a: var(--triad-cyan);
+  --accent-b: var(--triad-coral);
+  --accent-c: var(--triad-peach);
+}
+
+body.theme-night::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(120% 120% at 50% 30%, rgba(24, 60, 70, 0.35), transparent 70%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+body.theme-dawn {
+  background-color: var(--blush-clay);
+  color: #2d2621;
+  --accent-a: var(--triad-rose);
+  --accent-b: var(--triad-softgold);
+  --accent-c: var(--triad-azure);
+}
+
+body.theme-dawn .component-section,
+body.theme-dawn .control-panel {
+  background: rgba(255, 255, 255, 0.7);
+  color: #2f1f18;
+}
+
+body.theme-dawn .btn-resin[data-variant="primary"] {
+  color: #2f1f18;
+}
+
+body.theme-dawn .app-shell {
+  color: inherit;
+}
+
+/* Triad mapping modifiers */
+body.triad-cyan-coral-peach {
+  --accent-a: var(--triad-cyan);
+  --accent-b: var(--triad-coral);
+  --accent-c: var(--triad-peach);
+}
+
+body.triad-jade-ember-opal {
+  --accent-a: var(--triad-jade);
+  --accent-b: var(--triad-ember);
+  --accent-c: var(--triad-opal);
+}
+
+body.triad-azure-rose-softgold {
+  --accent-a: var(--triad-azure);
+  --accent-b: var(--triad-rose);
+  --accent-c: var(--triad-softgold);
+}
