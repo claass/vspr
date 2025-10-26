@@ -1,6 +1,8 @@
-"use client"
+'use client';
 
-import { Button } from "@/components/ui/button"
+import { useState } from 'react';
+
+import { Button } from '@/components/ui/button';
 import {
   Card,
   CardContent,
@@ -8,7 +10,7 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card"
+} from '@/components/ui/card';
 import {
   Dialog,
   DialogContent,
@@ -17,19 +19,18 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/components/ui/dialog"
-import { Separator } from "@/components/ui/separator"
-import { useState } from "react"
+} from '@/components/ui/dialog';
+import { Separator } from '@/components/ui/separator';
 
-export default function ComponentsDemo() {
-  const [count, setCount] = useState(0)
+export default function DesignPage() {
+  const [count, setCount] = useState(0);
 
   return (
-    <div className="container mx-auto p-8 space-y-8">
-      <div>
-        <h1 className="text-4xl font-bold mb-2">shadcn/ui Components Demo</h1>
+    <main className="container mx-auto space-y-8 p-8">
+      <div className="space-y-2">
+        <h1 className="text-4xl font-bold">Design System Playground</h1>
         <p className="text-muted-foreground">
-          Testing all installed shadcn/ui components
+          Explore the shadcn/ui components that power the Vesper experience.
         </p>
       </div>
 
@@ -51,7 +52,7 @@ export default function ComponentsDemo() {
 
       <section>
         <h2 className="text-2xl font-semibold mb-4">Card Component</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
           <Card>
             <CardHeader>
               <CardTitle>Card Title</CardTitle>
@@ -71,12 +72,10 @@ export default function ComponentsDemo() {
               <CardDescription>Click the button to increment</CardDescription>
             </CardHeader>
             <CardContent>
-              <p className="text-4xl font-bold text-center">{count}</p>
+              <p className="text-center text-4xl font-bold">{count}</p>
             </CardContent>
             <CardFooter className="justify-center">
-              <Button onClick={() => setCount(count + 1)}>
-                Increment
-              </Button>
+              <Button onClick={() => setCount((value) => value + 1)}>Increment</Button>
             </CardFooter>
           </Card>
         </div>
@@ -94,8 +93,7 @@ export default function ComponentsDemo() {
             <DialogHeader>
               <DialogTitle>Are you absolutely sure?</DialogTitle>
               <DialogDescription>
-                This is a dialog component. It can be used for confirmations,
-                forms, or any modal content.
+                This is a dialog component. It can be used for confirmations, forms, or any modal content.
               </DialogDescription>
             </DialogHeader>
             <DialogFooter>
@@ -124,6 +122,6 @@ export default function ComponentsDemo() {
           </div>
         </div>
       </section>
-    </div>
-  )
+    </main>
+  );
 }
