@@ -1,173 +1,41 @@
-# Vesper
+# Luminous Arcana Design System Demo
 
-A modern card reading application that brings the ancient practice of cartomancy into the digital age.
+This repo snapshot contains a framework-free showcase of the **Luminous Arcana v2.1** primitives and components, implemented with vanilla HTML, CSS, and JavaScript.
 
-## Overview
+## Running the demo
 
-Vesper is a web application that allows users to draw cards from a deck and receive interpretations and reflections. The MVP focuses on delivering a clean, intuitive three-card reading experience with plans to expand into personalized AI-powered reflections and social sharing features.
+Open `index.html` in any modern browser (Chrome, Safari, or Firefox). No build tooling is required.
 
-## Features
+## Color gamut strategy
 
-### Current (MVP)
-- **Three-Card Draw**: Draw three cards from a curated deck
-- **Card Descriptions**: View detailed interpretations for each card drawn
-- **Interactive UI**: Clean, modern interface built with shadcn/ui
-- **Reset & Redraw**: Start fresh readings at any time
+The system defines sRGB defaults for every token and overrides with Display-P3 values inside `@supports (color: color(display-p3 …))`. The QA panel at the bottom of the page reports which gamut the current browser is using. The triad selector swaps the cyan/coral/peach, jade/ember/opal, or azure/rose/soft gold accents scene-wide, while maintaining the fallback mapping for non-P3 displays.
 
-### Planned Features
-- **Basic Personalization**: Customized reading experiences
-- **AI Reflection**: 
-  - Text-based interpretations
-  - Interactive chat about your reading
-  - Voice call reflection sessions
-- **Social Sharing**: Share readings with friends
-- **Deck Generator**: Create and customize your own card decks
+To QA gamut differences:
 
-## Tech Stack
+1. Load the page in a P3-capable browser (Safari on macOS) and confirm the QA panel reports “Display-P3 active.”
+2. Force an sRGB-only environment (e.g., Chrome with `--force-color-profile=srgb`) and reload— the QA panel should switch to “sRGB fallback,” and the accents remain harmonious because of the fallback tokens.
 
-- **Frontend**: Next.js with React
-- **Backend**: FastAPI
-- **UI Components**: shadcn/ui with Tailwind CSS
-- **Card Storage**: JSON-based data structure
-- **Deployment**: Vercel
+## Accessibility & preferences
 
-## Project Structure
+- **Reduce Motion** mirrors the OS setting but can be overridden via the control panel. When enabled, looping motions stop, flicker becomes a static glow, parallax layers pin in place, and the chalice progress pauses.
+- **High Contrast** amplifies global contrast and adds a physical notch indicator to the active coin tabs so there is always a non-color state cue.
+- **Sans-serif Body** swaps long-form copy to the Satoshi stack while headings remain Satoshi by default.
+- Screen reader users receive explicit `aria-live` updates from the chalice progress and chat orb, plus ordered labels for each card (e.g., “Card 2 of 3: The Tower”).
 
-```
-vspr/
-├── data/
-│   └── cards.json          # Card deck data and descriptions
-├── app/                    # Next.js app directory
-├── api/                    # FastAPI backend
-│   └── draw/              # Card drawing endpoint
-├── components/            # React components
-└── public/               # Static assets
-```
+## Design guardrails
 
-## Getting Started
+Do:
 
-### Prerequisites
-- Node.js (v18 or higher)
-- Python 3.9+
-- npm or yarn
+- Compose each scene like a still-life, letting light appear to emanate from within each object.
+- Use exactly one lighting token per component (`light.candle`, `light.moon`, `light.altar`, or `light.ember`).
+- Apply the iridescent triad consistently across buttons, highlights, and filaments.
 
-### Installation
+Don’t:
 
-```bash
-# Clone the repository
-git clone https://github.com/yourusername/vspr.git
-cd vspr
+- Stack multiple glow tokens on a single component or flood elements with neon gradients.
+- Remove the “Guidance, not gospel” disclaimer— it is a required ethical guardrail, with a stronger alert any time health/legal/financial topics surface.
+- Override the motion ethos with snappy or elastic timing; reveals belong in the 350–450 ms ease-out range with a ~120 ms afterglow.
 
-# Install frontend dependencies
-npm install
+## Fonts
 
-# Install backend dependencies
-pip install -r requirements.txt
-
-# Run the development server
-npm run dev
-```
-
-The application will be available at `http://localhost:3000`.
-
-## UI Components (shadcn/ui)
-
-This project uses [shadcn/ui](https://ui.shadcn.com) for UI components. The following components are currently installed:
-
-- **Button**: Various button variants (default, secondary, destructive, outline, ghost, link)
-- **Card**: Card components for displaying content (Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter)
-- **Dialog**: Modal dialogs for user interactions
-- **Separator**: Horizontal and vertical separators for layout
-
-### Using Components
-
-Components are located in `components/ui/` and can be imported as follows:
-
-```tsx
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog"
-import { Separator } from "@/components/ui/separator"
-```
-
-### Component Demo
-
-Visit `/components-demo` to see all installed components in action.
-
-### Adding New Components
-
-To add new shadcn/ui components:
-
-1. Visit [shadcn/ui documentation](https://ui.shadcn.com/docs/components)
-2. Copy the component code into `components/ui/[component-name].tsx`
-3. Install any required dependencies
-4. Import and use in your pages/components
-
-### Theming
-
-The application uses CSS variables for theming, configured in:
-- `app/globals.css` - Color variables and theme definitions
-- `tailwind.config.js` - Tailwind configuration with shadcn/ui extensions
-- `components.json` - shadcn/ui configuration
-
-## API Endpoints
-
-### `POST /api/draw`
-Draws three random cards from the deck.
-
-**Response:**
-```json
-{
-  "cards": [
-    {
-      "id": "card-1",
-      "name": "The Card Name",
-      "description": "Card interpretation...",
-      "imageUrl": "..."
-    }
-  ]
-}
-```
-
-## Development Roadmap
-
-### Phase 1: Core Reading Flow MVP ✓
-- Basic three-card draw functionality
-- Card display and detail views
-- Clean, responsive UI
-
-### Phase 2: Basic Personalization
-- User preferences
-- Reading history
-- Customizable themes
-
-### Phase 3: AI Reflection
-- Text-based AI interpretations
-- Interactive chat interface
-- Voice-based reflection calls
-
-### Phase 4: Social & Sharing
-- Share readings on social media
-- Reading collections
-- Community features
-
-### Phase 5: Advanced Features
-- Custom deck creation
-- Advanced spreads (beyond three cards)
-- Analytics and insights
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-## License
-
-[Your License Here]
-
-## Contact
-
-For questions or feedback, please open an issue on GitHub.
-
----
-
-*Vesper: Modern card readings for a digital age*
+Headings and interface text use the Satoshi family; long-form copy defaults to Erode with a sans-serif override. Both fonts load via the Fontshare CDN with `font-display: swap`, and robust system fallbacks are declared for cases where network fonts are unavailable.

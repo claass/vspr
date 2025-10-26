@@ -1,0 +1,86 @@
+/* Luminous Arcana Token Library */
+:root {
+  /* Typography stack per spec */
+  --font-heading: "Satoshi", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-body: "Erode", Georgia, "Iowan Old Style", "Times New Roman", serif;
+  --font-body-sans: "Satoshi", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+  /* Base planes & neutrals (sRGB defaults) */
+  --ink-abyss: #0A0E12;
+  --deep-teal: #0E2830;
+  --blush-clay: #E6C2B5;
+  --off-white-warm: #F2EDE7;
+
+  /* Iridescent triad defaults (sRGB) */
+  --triad-cyan: #45E1D2;
+  --triad-coral: #FF6F61;
+  --triad-peach: #FFC7A6;
+  --triad-jade: #20C997;
+  --triad-ember: #FF7A3D;
+  --triad-opal: #B6E3E0;
+  --triad-azure: #2F80ED;
+  --triad-rose: #FF7AA2;
+  --triad-softgold: #E7C175;
+
+  /* Lighting tokens */
+  --light-candle-core: rgba(255, 208, 128, 0.75);
+  --light-candle-falloff: rgba(64, 112, 128, 0.35);
+  --light-moon-rim: rgba(170, 200, 255, 0.55);
+  --light-altar-uplight: rgba(255, 190, 160, 0.28);
+  --light-ember-rim: rgba(255, 120, 60, 0.65);
+
+  /* Material tokens */
+  --mat-resin-bg: rgba(255, 255, 255, 0.08);
+  --mat-resin-edge: rgba(255, 255, 255, 0.35);
+  --mat-opal-grain: 0.0125; /* 1–2% micro-noise */
+  --mat-velvet-vignette: radial-gradient(120% 120% at 50% 30%, transparent 40%, rgba(0, 0, 0, 0.35) 100%);
+  --mat-coin-specular: rgba(255, 255, 220, 0.20);
+  --mat-wax-body: rgba(255, 244, 224, 0.75);
+
+  /* Motion tokens */
+  --motion-reveal: 380ms ease-out;
+  --motion-afterglow: 120ms;
+  --motion-parallax-range: 6px;
+
+  /* Shadows & depth */
+  --shadow-soft: 0 12px 40px rgba(0, 0, 0, 0.35);
+  --shadow-card: 0 14px 60px rgba(0, 0, 0, 0.45);
+
+  /* Component sizing */
+  --radius-pill: 999px;
+  --radius-card: 24px;
+  --radius-coin: 32px;
+}
+
+@supports (color: color(display-p3 1 1 1)) {
+:root {
+  --ink-abyss: color(display-p3 0.04 0.06 0.07);
+  --deep-teal: color(display-p3 0.07 0.18 0.20);
+  --blush-clay: color(display-p3 0.86 0.73 0.67);
+  --off-white-warm: color(display-p3 0.95 0.93 0.91);
+
+  --triad-cyan: color(display-p3 0.27 0.89 0.83);
+  --triad-coral: color(display-p3 0.94 0.40 0.43);
+  --triad-peach: color(display-p3 0.98 0.77 0.63);
+  --triad-jade: color(display-p3 0.27 0.78 0.58);
+  --triad-ember: color(display-p3 0.98 0.50 0.30);
+  --triad-opal: color(display-p3 0.72 0.88 0.84);
+  --triad-azure: color(display-p3 0.20 0.56 0.92);
+  --triad-rose: color(display-p3 0.96 0.48 0.62);
+  --triad-softgold: color(display-p3 0.90 0.79 0.57);
+}
+}
+
+/* Accent triad mapping placeholders (overridden by themes) */
+:root {
+  --accent-a: var(--triad-cyan);
+  --accent-b: var(--triad-coral);
+  --accent-c: var(--triad-peach);
+}
+
+/* Lighting-intensity helpers */
+:root {
+  --glow-strength-low: 0 0 12px;
+  --glow-strength-medium: 0 0 20px;
+  --glow-strength-high: 0 0 32px;
+}
