@@ -68,9 +68,9 @@ export const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
 
 TextField.displayName = "TextField";
 
-export interface SearchFieldProps extends Omit<TextFieldProps, "type"> {}
+interface SearchFieldProps extends Omit<TextFieldProps, "type"> {}
 
-export const SearchField = React.forwardRef<HTMLInputElement, SearchFieldProps>(
+const SearchField = React.forwardRef<HTMLInputElement, SearchFieldProps>(
   ({ className, ...props }, ref) => {
     return (
       <TextField

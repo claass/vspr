@@ -59,14 +59,14 @@ export function ChaliceProgress({
   );
 }
 
-export interface LinearProgressProps {
+interface LinearProgressProps {
   value?: number;
   max?: number;
   indeterminate?: boolean;
   srOnlyLabel?: string;
 }
 
-export function LinearProgress({
+function LinearProgress({
   value = 0,
   max = 100,
   indeterminate,
