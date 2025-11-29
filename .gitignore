@@ -37,3 +37,13 @@ next-env.d.ts
 # python
 __pycache__/
 venv.playwright-mcp/
+
+# firebase
+serviceAccountKey.json
+firebase-service-account.json
+*-firebase-adminsdk-*.json
+
+# environment
+.env
+.env.local
+.env.production
