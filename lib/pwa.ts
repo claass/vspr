@@ -360,12 +360,14 @@ export function getInstallInstructions(): {
  * Sends a message to the service worker
  */
 export async function sendMessageToSW(message: any): Promise<void> {
-  if (!navigator.serviceWorker.controller) {
+  const controller = navigator.serviceWorker.controller;
+
+  if (!controller) {
     console.warn('[PWA] No service worker controller available');
     return;
   }
 
-  navigator.serviceWorker.controller.postMessage(message);
+  controller.postMessage(message);
 }
 
 /**
@@ -382,7 +384,9 @@ export async function cacheReading(reading: any): Promise<void> {
  * Gets the current service worker version
  */
 export async function getServiceWorkerVersion(): Promise<string | null> {
-  if (!navigator.serviceWorker.controller) {
+  const controller = navigator.serviceWorker.controller;
+
+  if (!controller) {
     return null;
   }
 
@@ -392,9 +396,6 @@ export async function getServiceWorkerVersion(): Promise<string | null> {
       resolve(event.data.version || null);
     };
 
-    navigator.serviceWorker.controller.postMessage(
-      { type: 'GET_VERSION' },
-      [messageChannel.port2]
-    );
+    controller.postMessage({ type: 'GET_VERSION' }, [messageChannel.port2]);
   });
 }
