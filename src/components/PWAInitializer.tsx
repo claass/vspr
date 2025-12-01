@@ -3,8 +3,6 @@
  * Client-side component that initializes the service worker
  */
 
-'use client';
-
 import { useEffect } from 'react';
 import { registerServiceWorker } from '@/lib/pwa';
 

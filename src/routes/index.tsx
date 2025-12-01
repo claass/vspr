@@ -1,60 +1,59 @@
-'use client';
-
-import Link from 'next/link';
-import { useState } from 'react';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Route, useRouter } from '@tanstack/react-router'
+import { useState } from 'react'
+import { Link } from '@tanstack/react-router'
+import { Button } from '@/components/ui/button'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
-} from '@/components/ui/dialog';
-import { Separator } from '@/components/ui/separator';
+} from '@/components/ui/dialog'
+import { Separator } from '@/components/ui/separator'
 
 interface CardData {
-  id: string;
-  name: string;
-  description: string;
-  imageUrl: string;
+  id: string
+  name: string
+  description: string
+  imageUrl: string
 }
 
-export default function Home() {
-  const [cards, setCards] = useState<CardData[]>([]);
-  const [selectedCard, setSelectedCard] = useState<CardData | null>(null);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+function Home() {
+  const [cards, setCards] = useState<CardData[]>([])
+  const [selectedCard, setSelectedCard] = useState<CardData | null>(null)
+  const [isLoading, setIsLoading] = useState(false)
+  const [error, setError] = useState<string | null>(null)
 
   const drawCards = async () => {
-    setIsLoading(true);
-    setError(null);
+    setIsLoading(true)
+    setError(null)
     try {
-      const response = await fetch('/api/py/draw');
+      const response = await fetch('/api/py/draw')
       if (!response.ok) {
-        throw new Error('Failed to draw cards');
+        throw new Error('Failed to draw cards')
       }
-      const data = await response.json();
-      setCards(data.cards);
+      const data = await response.json()
+      setCards(data.cards)
     } catch (err) {
-      setError('Failed to draw cards. Please try again.');
-      console.error(err);
+      setError('Failed to draw cards. Please try again.')
+      console.error(err)
     } finally {
-      setIsLoading(false);
+      setIsLoading(false)
     }
-  };
+  }
 
   const resetReading = () => {
-    setCards([]);
-    setSelectedCard(null);
-    setError(null);
-  };
+    setCards([])
+    setSelectedCard(null)
+    setError(null)
+  }
 
   return (
     <main className="min-h-screen bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 dark:from-gray-900 dark:via-purple-900 dark:to-indigo-900">
       <div className="container mx-auto px-4 py-16">
         <div className="mb-8 flex justify-end">
           <Button asChild variant="outline">
-            <Link href="/design">Design system</Link>
+            <Link to="/design">Design system</Link>
           </Button>
         </div>
 
@@ -191,5 +190,13 @@ export default function Home() {
         </Dialog>
       </div>
     </main>
-  );
+  )
 }
+
+export const Route = new Route({
+  getParentRoute: () => import('./__root').then(m => m.Route),
+  path: '/',
+  component: Home,
+})
+
+export default Route

@@ -1,14 +1,14 @@
 {
-  "name": "nextjs-fastapi",
+  "name": "vesper",
   "version": "0.2.0",
   "private": true,
   "scripts": {
     "fastapi-dev": "pip3 install -r requirements.txt && python3 -m uvicorn api.index:app --reload",
-    "next-dev": "next dev",
-    "dev": "concurrently \"npm run next-dev\" \"npm run fastapi-dev\"",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint",
+    "vite-dev": "vite",
+    "dev": "concurrently \"npm run vite-dev\" \"npm run fastapi-dev\"",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint src --ext ts,tsx",
     "test": "vitest",
     "test:ui": "vitest --ui",
     "test:coverage": "vitest --coverage"
@@ -17,18 +17,15 @@
     "@radix-ui/react-dialog": "^1.1.15",
     "@radix-ui/react-separator": "^1.1.7",
     "@radix-ui/react-slot": "^1.2.3",
-    "@types/node": "22.5.5",
+    "@tanstack/react-router": "^1.28.0",
     "@types/react": "18.3.8",
     "@types/react-dom": "18.3.0",
     "autoprefixer": "10.4.20",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "concurrently": "^9.0.1",
-    "eslint": "8.41.0",
-    "eslint-config-next": "13.4.4",
     "firebase": "^10.14.1",
     "lucide-react": "^0.546.0",
-    "next": "^14.2.13",
     "postcss": "^8.4.47",
     "react": "18.3.1",
     "react-dom": "18.3.1",
@@ -38,8 +35,12 @@
     "typescript": "5.6.2"
   },
   "devDependencies": {
+    "@types/node": "22.5.5",
+    "@vitejs/plugin-react": "^4.2.1",
     "@vitest/ui": "^4.0.14",
+    "eslint": "8.41.0",
     "happy-dom": "^20.0.11",
+    "vite": "^5.0.8",
     "vitest": "^4.0.14"
   }
 }
