@@ -1,0 +1,13 @@
+{
+  "name": "vesper",
+  "version": "1.0.0",
+  "description": "Simple tarot reading app - pure HTML, CSS, and JavaScript",
+  "scripts": {
+    "dev": "npx serve .",
+    "build": "echo 'No build needed - static site'",
+    "start": "npx serve ."
+  },
+  "keywords": ["tarot", "static", "vanilla-js"],
+  "author": "",
+  "license": "MIT"
+}

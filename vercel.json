@@ -1,0 +1,24 @@
+{
+  "version": 2,
+  "public": true,
+  "headers": [
+    {
+      "source": "/cards.json",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400"
+        }
+      ]
+    },
+    {
+      "source": "/(.*\\.(js|css|html))",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600"
+        }
+      ]
+    }
+  ]
+}
