@@ -1,0 +1,29 @@
+{
+  "version": 2,
+  "public": true,
+  "buildCommand": "echo 'Static site - no build needed'",
+  "devCommand": "npx serve .",
+  "installCommand": "echo 'No dependencies to install'",
+  "framework": null,
+  "outputDirectory": ".",
+  "headers": [
+    {
+      "source": "/cards.json",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400"
+        }
+      ]
+    },
+    {
+      "source": "/(.*\\.(js|css|html))",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600"
+        }
+      ]
+    }
+  ]
+}

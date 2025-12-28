@@ -1,21 +1,56 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/icons/icon-192x192.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Modern card readings for a digital age" />
-    <meta name="theme-color" content="#7A6CFF" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-    <meta name="apple-mobile-web-app-title" content="Vesper" />
-    <meta name="format-detection" content="telephone=no" />
-    <link rel="apple-touch-icon" href="/icons/icon-192x192.png" />
-    <link rel="manifest" href="/manifest.json" />
-    <title>Vesper</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Modern mysticism meets digital serenity">
+    <meta name="theme-color" content="#7A6CFF">
+    <link rel="icon" type="image/svg+xml" href="/icons/icon-192x192.png">
+    <title>Vesper - Daily Tarot</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>✨ Vesper</h1>
+            <p class="tagline">Modern mysticism meets digital serenity</p>
+        </header>
+
+        <main>
+            <!-- Daily Draw Section -->
+            <section id="draw-section" class="card">
+                <h2>Daily Draw</h2>
+                <p class="subtitle">Draw your cards for reflection</p>
+                <div class="button-group">
+                    <button id="draw-one" class="btn btn-primary">Draw One Card</button>
+                    <button id="draw-three" class="btn btn-secondary">Draw Three Cards</button>
+                </div>
+            </section>
+
+            <!-- Reading Display Section -->
+            <section id="reading-section" class="hidden">
+                <div id="cards-display" class="cards-grid"></div>
+                <div class="button-group">
+                    <button id="save-reading" class="btn btn-primary">Save Reading</button>
+                    <button id="new-reading" class="btn btn-secondary">New Reading</button>
+                </div>
+            </section>
+
+            <!-- History Section -->
+            <section id="history-section" class="card">
+                <h2>Reading History</h2>
+                <div id="history-list" class="history-list">
+                    <p class="empty-state">No readings yet. Draw your first cards!</p>
+                </div>
+                <button id="clear-history" class="btn btn-danger hidden">Clear All History</button>
+            </section>
+        </main>
+
+        <footer>
+            <p>May your readings bring clarity</p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
 </html>
