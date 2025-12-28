@@ -4,7 +4,8 @@
   "description": "Simple tarot reading app - pure HTML, CSS, and JavaScript",
   "scripts": {
     "dev": "npx serve .",
-    "build": "echo 'No build needed - static site'",
+    "build": "echo 'Static site - no build needed'",
+    "vercel-build": "echo 'Static site - no build needed'",
     "start": "npx serve ."
   },
   "keywords": ["tarot", "static", "vanilla-js"],
