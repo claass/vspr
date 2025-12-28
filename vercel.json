@@ -1,10 +1,5 @@
 {
-  "version": 2,
-  "public": true,
-  "buildCommand": "echo 'Static site - no build needed'",
-  "devCommand": "npx serve .",
-  "installCommand": "echo 'No dependencies to install'",
-  "framework": null,
+  "buildCommand": null,
   "outputDirectory": ".",
   "headers": [
     {
